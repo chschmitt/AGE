@@ -161,17 +161,17 @@ void OpenSaveDialog::OnDefault(const wxString &part)
     }
     else
     {
-        game_path = DriveLetterBox->GetValue() + (wxIsPlatform64Bit() ? ":\\Program Files (x86)" : ":\\Program Files") + part;
+        game_path = DriveLetterBox->GetValue() + (wxIsPlatform64Bit() ? ":/Program Files (x86)" : ":/Program Files") + part;
     }
 }
 
 void OpenSaveDialog::OnDefaultAoE(wxCommandEvent &event)
 {
-    OnDefault("\\Microsoft Games\\Age of Empires");
+    OnDefault("/Microsoft Games/Age of Empires");
 
     ComboBox_GenieVer->SetSelection(EV_AoE);
-    if (!ForceDat) Path_DatFileLocation->SetPath(game_path + "\\data\\empires.dat");
-    Path_LangFileLocation->SetPath(game_path + "\\language.dll");
+    if (!ForceDat) Path_DatFileLocation->SetPath(game_path + "/data/empires.dat");
+    Path_LangFileLocation->SetPath(game_path + "/language.dll");
     Path_LangX1FileLocation->SetPath(wxEmptyString);
     Path_LangX1P1FileLocation->SetPath(wxEmptyString);
     Radio_DatFileLocation->SetValue(true);
@@ -183,12 +183,12 @@ void OpenSaveDialog::OnDefaultAoE(wxCommandEvent &event)
 
 void OpenSaveDialog::OnDefaultRoR(wxCommandEvent &event)
 {
-    OnDefault("\\Microsoft Games\\Age of Empires");
+    OnDefault("/Microsoft Games/Age of Empires");
 
     ComboBox_GenieVer->SetSelection(EV_RoR);
-    if (!ForceDat) Path_DatFileLocation->SetPath(game_path + "\\data2\\empires.dat");
-    Path_LangFileLocation->SetPath(game_path + "\\language.dll");
-    Path_LangX1FileLocation->SetPath(game_path + "\\languagex.dll");
+    if (!ForceDat) Path_DatFileLocation->SetPath(game_path + "/data2/empires.dat");
+    Path_LangFileLocation->SetPath(game_path + "/language.dll");
+    Path_LangX1FileLocation->SetPath(game_path + "/languagex.dll");
     Path_LangX1P1FileLocation->SetPath(wxEmptyString);
     Radio_DatFileLocation->SetValue(true);
     CheckBox_LangFileLocation->SetValue(true);
@@ -199,13 +199,13 @@ void OpenSaveDialog::OnDefaultRoR(wxCommandEvent &event)
 
 void OpenSaveDialog::OnDefaultDE1(wxCommandEvent &event)
 {
-    OnDefault("\\Steam\\steamapps\\common\\AoEDE");
+    OnDefault("/Steam/steamapps/common/AoEDE");
     wxString locale = LanguageBox->GetValue();
 
     ComboBox_GenieVer->SetSelection(EV_Tapsa);
     CheckBox_LangWrite->Enable(false);
-    if (!ForceDat) Path_DatFileLocation->SetPath(game_path + "\\Data\\empires.dat");
-    Path_LangFileLocation->SetPath(game_path + "\\Data\\Localization\\" + locale + "\\strings.txt");
+    if (!ForceDat) Path_DatFileLocation->SetPath(game_path + "/Data/empires.dat");
+    Path_LangFileLocation->SetPath(game_path + "/Data/Localization/" + locale + "/strings.txt");
     Path_LangX1FileLocation->SetPath(wxEmptyString);
     Path_LangX1P1FileLocation->SetPath(wxEmptyString);
     Radio_DatFileLocation->SetValue(true);
@@ -215,11 +215,11 @@ void OpenSaveDialog::OnDefaultDE1(wxCommandEvent &event)
 
 void OpenSaveDialog::OnDefaultAoK(wxCommandEvent &event)
 {
-    OnDefault("\\Microsoft Games\\Age of Empires II");
+    OnDefault("/Microsoft Games/Age of Empires II");
 
     ComboBox_GenieVer->SetSelection(EV_AoK);
-    if (!ForceDat) Path_DatFileLocation->SetPath(game_path + "\\data\\empires2.dat");
-    Path_LangFileLocation->SetPath(game_path + "\\language.dll");
+    if (!ForceDat) Path_DatFileLocation->SetPath(game_path + "/data/empires2.dat");
+    Path_LangFileLocation->SetPath(game_path + "/language.dll");
     Path_LangX1FileLocation->SetPath(wxEmptyString);
     Path_LangX1P1FileLocation->SetPath(wxEmptyString);
     Radio_DatFileLocation->SetValue(true);
@@ -231,13 +231,13 @@ void OpenSaveDialog::OnDefaultAoK(wxCommandEvent &event)
 
 void OpenSaveDialog::OnDefaultTC(wxCommandEvent &event)
 {
-    OnDefault("\\Microsoft Games\\Age of Empires II");
+    OnDefault("/Microsoft Games/Age of Empires II");
 
     ComboBox_GenieVer->SetSelection(EV_TC);
-    if (!ForceDat) Path_DatFileLocation->SetPath(game_path + "\\data\\empires2_x1_p1.dat");
-    Path_LangFileLocation->SetPath(game_path + "\\language.dll");
-    Path_LangX1FileLocation->SetPath(game_path + "\\language_x1.dll");
-    Path_LangX1P1FileLocation->SetPath(game_path + "\\language_x1_p1.dll");
+    if (!ForceDat) Path_DatFileLocation->SetPath(game_path + "/data/empires2_x1_p1.dat");
+    Path_LangFileLocation->SetPath(game_path + "/language.dll");
+    Path_LangX1FileLocation->SetPath(game_path + "/language_x1.dll");
+    Path_LangX1P1FileLocation->SetPath(game_path + "/language_x1_p1.dll");
     Radio_DatFileLocation->SetValue(true);
     CheckBox_LangFileLocation->SetValue(true);
     CheckBox_LangX1FileLocation->SetValue(true);
@@ -247,14 +247,14 @@ void OpenSaveDialog::OnDefaultTC(wxCommandEvent &event)
 
 void OpenSaveDialog::OnDefaultAoKHD(wxCommandEvent &event)
 {
-    OnDefault("\\Steam\\steamapps\\common\\Age2HD");
+    OnDefault("/Steam/steamapps/common/Age2HD");
     wxString locale = LanguageBox->GetValue();
 
     ComboBox_GenieVer->SetSelection(EV_TC);
     CheckBox_LangWrite->Enable(false);
-    if (!ForceDat) Path_DatFileLocation->SetPath(game_path + "\\resources\\_common\\dat\\empires2_x1_p1.dat");
-    Path_LangFileLocation->SetPath(game_path + "\\resources\\" + locale + "\\strings\\key-value\\key-value-strings-utf8.txt");
-    Path_LangX1FileLocation->SetPath(game_path + "\\resources\\" + locale + "\\strings\\key-value\\key-value-modded-strings-utf8.txt");
+    if (!ForceDat) Path_DatFileLocation->SetPath(game_path + "/resources/_common/dat/empires2_x1_p1.dat");
+    Path_LangFileLocation->SetPath(game_path + "/resources/" + locale + "/strings/key-value/key-value-strings-utf8.txt");
+    Path_LangX1FileLocation->SetPath(game_path + "/resources/" + locale + "/strings/key-value/key-value-modded-strings-utf8.txt");
     Path_LangX1P1FileLocation->SetPath(wxEmptyString);
     Radio_DatFileLocation->SetValue(true);
     CheckBox_LangX1P1FileLocation->SetValue(false);
@@ -262,14 +262,14 @@ void OpenSaveDialog::OnDefaultAoKHD(wxCommandEvent &event)
 
 void OpenSaveDialog::OnDefaultAoP(wxCommandEvent &event)
 {
-    OnDefault("\\Steam\\steamapps\\common\\Age2HD");
+    OnDefault("/Steam/steamapps/common/Age2HD");
     wxString locale = LanguageBox->GetValue();
 
     ComboBox_GenieVer->SetSelection(EV_Cysion);
     CheckBox_LangWrite->Enable(false);
-    if (!ForceDat) Path_DatFileLocation->SetPath(game_path + "\\resources\\_common\\dat\\empires2_x2_p1.dat");
-    Path_LangFileLocation->SetPath(game_path + "\\resources\\" + locale + "\\strings\\key-value\\key-value-strings-utf8.txt");
-    Path_LangX1FileLocation->SetPath(game_path + "\\resources\\" + locale + "\\strings\\key-value\\key-value-modded-strings-utf8.txt");
+    if (!ForceDat) Path_DatFileLocation->SetPath(game_path + "/resources/_common/dat/empires2_x2_p1.dat");
+    Path_LangFileLocation->SetPath(game_path + "/resources/" + locale + "/strings/key-value/key-value-strings-utf8.txt");
+    Path_LangX1FileLocation->SetPath(game_path + "/resources/" + locale + "/strings/key-value/key-value-modded-strings-utf8.txt");
     Path_LangX1P1FileLocation->SetPath(wxEmptyString);
     Radio_DatFileLocation->SetValue(true);
     CheckBox_LangX1P1FileLocation->SetValue(false);
@@ -277,14 +277,14 @@ void OpenSaveDialog::OnDefaultAoP(wxCommandEvent &event)
 
 void OpenSaveDialog::OnDefaultDE2(wxCommandEvent &event)
 {
-    OnDefault("\\Steam\\steamapps\\common\\AoE2DE");
+    OnDefault("/Steam/steamapps/common/AoE2DE");
     wxString locale = LanguageBox->GetValue();
 
     ComboBox_GenieVer->SetSelection(EV_DE2);
     CheckBox_LangWrite->Enable(false);
-    if (!ForceDat) Path_DatFileLocation->SetPath(game_path + "\\resources\\_common\\dat\\empires2_x2_p1.dat");
-    Path_LangFileLocation->SetPath(game_path + "\\resources\\" + locale + "\\strings\\key-value\\key-value-strings-utf8.txt");
-    Path_LangX1FileLocation->SetPath(game_path + "\\resources\\" + locale + "\\strings\\key-value\\key-value-modded-strings-utf8.txt");
+    if (!ForceDat) Path_DatFileLocation->SetPath(game_path + "/resources/_common/dat/empires2_x2_p1.dat");
+    Path_LangFileLocation->SetPath(game_path + "/resources/" + locale + "/strings/key-value/key-value-strings-utf8.txt");
+    Path_LangX1FileLocation->SetPath(game_path + "/resources/" + locale + "/strings/key-value/key-value-modded-strings-utf8.txt");
     Path_LangX1P1FileLocation->SetPath(wxEmptyString);
     Radio_DatFileLocation->SetValue(true);
     CheckBox_LangX1P1FileLocation->SetValue(false);
@@ -292,11 +292,11 @@ void OpenSaveDialog::OnDefaultDE2(wxCommandEvent &event)
 
 void OpenSaveDialog::OnDefaultSWGB(wxCommandEvent &event)
 {
-    OnDefault("\\GOG Games\\Star Wars - Galactic Battlegrounds");
+    OnDefault("/GOG Games/Star Wars - Galactic Battlegrounds");
 
     ComboBox_GenieVer->SetSelection(EV_SWGB);
-    if (!ForceDat) Path_DatFileLocation->SetPath(game_path + "\\Data\\genie.dat");
-    Path_LangFileLocation->SetPath(game_path + "\\language.dll");
+    if (!ForceDat) Path_DatFileLocation->SetPath(game_path + "/Data/genie.dat");
+    Path_LangFileLocation->SetPath(game_path + "/language.dll");
     Path_LangX1FileLocation->SetPath(wxEmptyString);
     Path_LangX1P1FileLocation->SetPath(wxEmptyString);
     Radio_DatFileLocation->SetValue(true);
@@ -308,24 +308,24 @@ void OpenSaveDialog::OnDefaultSWGB(wxCommandEvent &event)
 
 void OpenSaveDialog::OnDefaultCC(wxCommandEvent &event)
 {
-    OnDefault("\\GOG Games\\Star Wars - Galactic Battlegrounds");
+    OnDefault("/GOG Games/Star Wars - Galactic Battlegrounds");
 
     if (path_src == 2)
     {
         ComboBox_GenieVer->SetSelection(EV_EF2);
-        if (!ForceDat) Path_DatFileLocation->SetPath(game_path + "\\Data\\genie_x2.dat");
-        Path_LangX1P1FileLocation->SetPath(game_path + "\\language_x2.dll");
+        if (!ForceDat) Path_DatFileLocation->SetPath(game_path + "/Data/genie_x2.dat");
+        Path_LangX1P1FileLocation->SetPath(game_path + "/language_x2.dll");
         CheckBox_LangX1P1FileLocation->SetValue(true);
     }
     else
     {
         ComboBox_GenieVer->SetSelection(EV_CC);
-        if (!ForceDat) Path_DatFileLocation->SetPath(game_path + "\\Data\\genie_x1.dat");
+        if (!ForceDat) Path_DatFileLocation->SetPath(game_path + "/Data/genie_x1.dat");
         Path_LangX1P1FileLocation->SetPath(wxEmptyString);
         CheckBox_LangX1P1FileLocation->SetValue(false);
     }
-    Path_LangFileLocation->SetPath(game_path + "\\language.dll");
-    Path_LangX1FileLocation->SetPath(game_path + "\\language_x1.dll");
+    Path_LangFileLocation->SetPath(game_path + "/language.dll");
+    Path_LangX1FileLocation->SetPath(game_path + "/language_x1.dll");
     Radio_DatFileLocation->SetValue(true);
     CheckBox_LangFileLocation->SetValue(true);
     CheckBox_LangX1FileLocation->SetValue(true);
@@ -343,7 +343,7 @@ void OpenSaveDialog::OnPathFromRegistry(wxCommandEvent &event)
     {
         case EV_AoE:
         {
-            wxRegKey key(wxRegKey::HKLM, "Software\\Microsoft\\Microsoft Games\\Age of Empires\\1.0");
+            wxRegKey key(wxRegKey::HKLM, "Software/Microsoft/Microsoft Games/Age of Empires/1.0");
             if (key.Exists())
             {
                 if (key.QueryValue("EXE Path", path))
@@ -357,7 +357,7 @@ void OpenSaveDialog::OnPathFromRegistry(wxCommandEvent &event)
         }
         case EV_RoR:
         {
-            wxRegKey key(wxRegKey::HKLM, "Software\\Microsoft\\Microsoft Games\\Age of Empires Expansion\\1.0");
+            wxRegKey key(wxRegKey::HKLM, "Software/Microsoft/Microsoft Games/Age of Empires Expansion/1.0");
             if (key.Exists())
             {
                 if (key.QueryValue("EXE Path", path))
@@ -371,7 +371,7 @@ void OpenSaveDialog::OnPathFromRegistry(wxCommandEvent &event)
         }
         case EV_AoK:
         {
-            wxRegKey key(wxRegKey::HKLM, "Software\\Microsoft\\Microsoft Games\\Age of Empires\\2.0");
+            wxRegKey key(wxRegKey::HKLM, "Software/Microsoft/Microsoft Games/Age of Empires/2.0");
             if (key.Exists())
             {
                 if (key.QueryValue("EXE Path", path))
@@ -387,7 +387,7 @@ void OpenSaveDialog::OnPathFromRegistry(wxCommandEvent &event)
         case EV_UP:
         case EV_TCV:
         {
-            wxRegKey key(wxRegKey::HKLM, "Software\\Microsoft\\Microsoft Games\\Age of Empires II: The Conquerors Expansion\\1.0");
+            wxRegKey key(wxRegKey::HKLM, "Software/Microsoft/Microsoft Games/Age of Empires II: The Conquerors Expansion/1.0");
             if (key.Exists())
             {
                 if (key.QueryValue("EXE Path", path))
@@ -401,7 +401,7 @@ void OpenSaveDialog::OnPathFromRegistry(wxCommandEvent &event)
         }
         case EV_SWGB:
         {
-            wxRegKey key(wxRegKey::HKLM, "Software\\LucasArts Entertainment Company LLC\\Star Wars Galactic Battlegrounds\\1.0");
+            wxRegKey key(wxRegKey::HKLM, "Software/LucasArts Entertainment Company LLC/Star Wars Galactic Battlegrounds/1.0");
             if (key.Exists())
             {
                 if (key.QueryValue("Game Path", path))
@@ -416,7 +416,7 @@ void OpenSaveDialog::OnPathFromRegistry(wxCommandEvent &event)
         }
         case EV_CC:
         {
-            wxRegKey key(wxRegKey::HKLM, "Software\\LucasArts Entertainment Company LLC\\Star Wars Galactic Battlegrounds: Clone Campaigns\\1.0");
+            wxRegKey key(wxRegKey::HKLM, "Software/LucasArts Entertainment Company LLC/Star Wars Galactic Battlegrounds: Clone Campaigns/1.0");
             if (key.Exists())
             {
                 if (key.QueryValue("Game Path", path))
@@ -432,7 +432,7 @@ void OpenSaveDialog::OnPathFromRegistry(wxCommandEvent &event)
         case EV_EF:
         case EV_EF2:
         {
-            wxRegKey key(wxRegKey::HKLM, "Software\\LucasArts Entertainment Company LLC\\Star Wars Galactic Battlegrounds: Clone Campaigns\\1.0");
+            wxRegKey key(wxRegKey::HKLM, "Software/LucasArts Entertainment Company LLC/Star Wars Galactic Battlegrounds: Clone Campaigns/1.0");
             if (key.Exists())
             {
                 path_src = 2;

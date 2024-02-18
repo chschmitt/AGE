@@ -127,7 +127,7 @@ void AGE_Frame::OnOpen(wxCommandEvent&)
 
         int RecentItems, RecentVersion;
         {
-            wxConfig RecentOpen("", "", "AGE2\\RecentOpen", "", wxCONFIG_USE_LOCAL_FILE | wxCONFIG_USE_RELATIVE_PATH);
+            wxConfig RecentOpen("", "", "AGE2/RecentOpen", "", wxCONFIG_USE_LOCAL_FILE | wxCONFIG_USE_RELATIVE_PATH);
             RecentOpen.Read("Recent/Items", &RecentItems, 0);
             RecentOpen.Read("Recent/Version", &RecentVersion, 1);
             RecentItems = std::min(30, RecentItems);
@@ -513,30 +513,30 @@ void AGE_Frame::OnOpen(wxCommandEvent&)
             {
                 gotcha = loadPalette(folder);
                 wxString soundfolder = FolderDRS2;
-                soundfolder.Replace("drs", "sound\\terrain", false);
+                soundfolder.Replace("drs", "sound/terrain", false);
                 if(wxDir::Exists(soundfolder))
-                soundfolders.Add(soundfolder + "\\");
-                if(wxDir::Exists(folder + "\\gamedata_x2"))
-                soundfolders.Add(folder + "\\gamedata_x2\\");
-                if(wxDir::Exists(folder + "\\sounds"))
-                soundfolders.Add(folder + "\\sounds\\");
-                if(wxDir::Exists(folder + "\\interface"))
-                soundfolders.Add(folder + "\\interface\\");
+                soundfolders.Add(soundfolder + "/");
+                if(wxDir::Exists(folder + "/gamedata_x2"))
+                soundfolders.Add(folder + "/gamedata_x2/");
+                if(wxDir::Exists(folder + "/sounds"))
+                soundfolders.Add(folder + "/sounds/");
+                if(wxDir::Exists(folder + "/interface"))
+                soundfolders.Add(folder + "/interface/");
             }
             folder = FolderDRS;
             if(!folder.empty())
             {
                 if(!gotcha) loadPalette(folder);
                 wxString soundfolder = FolderDRS;
-                soundfolder.Replace("drs", "sound\\terrain", false);
+                soundfolder.Replace("drs", "sound/terrain", false);
                 if(wxDir::Exists(soundfolder))
-                soundfolders.Add(soundfolder + "\\");
-                if(wxDir::Exists(folder + "\\gamedata_x2"))
-                soundfolders.Add(folder + "\\gamedata_x2\\");
-                if(wxDir::Exists(folder + "\\sounds"))
-                soundfolders.Add(folder + "\\sounds\\");
-                if(wxDir::Exists(folder + "\\interface"))
-                soundfolders.Add(folder + "\\interface\\");
+                soundfolders.Add(soundfolder + "/");
+                if(wxDir::Exists(folder + "/gamedata_x2"))
+                soundfolders.Add(folder + "/gamedata_x2/");
+                if(wxDir::Exists(folder + "/sounds"))
+                soundfolders.Add(folder + "/sounds/");
+                if(wxDir::Exists(folder + "/interface"))
+                soundfolders.Add(folder + "/interface/");
 
                 // Load extra palettes
                 folder.Replace("drs", "dat", false);
@@ -549,7 +549,7 @@ void AGE_Frame::OnOpen(wxCommandEvent&)
                         genie::PalFile pal;
                         try
                         {
-                            pal.load((folder + "\\" + res).c_str());
+                            pal.load((folder + "/" + res).c_str());
                             palettes.push_back(pal.getColors());
                         }
                         catch(const std::ios_base::failure&){}
@@ -564,16 +564,16 @@ void AGE_Frame::OnOpen(wxCommandEvent&)
             wxString folder = FolderDRS2;
             if(UseMod && !folder.empty())
             {
-                folder.Replace("data", GenieVersion < genie::GV_AoKE3 ? "sound" : "sound\\terrain", false);
+                folder.Replace("data", GenieVersion < genie::GV_AoKE3 ? "sound" : "sound/terrain", false);
                 if(wxDir::Exists(folder))
-                soundfolders.Add(folder + "\\");
+                soundfolders.Add(folder + "/");
             }
             folder = FolderDRS;
             if(!folder.empty())
             {
-                folder.Replace("data", GenieVersion < genie::GV_AoKE3 ? "sound" : "sound\\terrain", false);
+                folder.Replace("data", GenieVersion < genie::GV_AoKE3 ? "sound" : "sound/terrain", false);
                 if(wxDir::Exists(folder))
-                soundfolders.Add(folder + "\\");
+                soundfolders.Add(folder + "/");
             }
 
             GetToolBar()->ToggleTool(eDRS, true);
@@ -1453,71 +1453,71 @@ void AGE_Frame::OnMenuOption(wxCommandEvent &event)
                     {
                         if(GenieVersion >= genie::GV_RoR)
                         {
-                            FilesToRead.Add("2\\sounds.drs");
-                            FilesToRead.Add("2\\graphics.drs");
-                            FilesToRead.Add("2\\interfac.drs");
+                            FilesToRead.Add("2/sounds.drs");
+                            FilesToRead.Add("2/graphics.drs");
+                            FilesToRead.Add("2/interfac.drs");
                         }
                     }
                     else
                     {
                         if(GenieVersion == genie::GV_TC || GenieVersion == genie::GV_TCV)
                         {
-                            FilesToRead.Add("\\sounds_x1.drs");
-                            FilesToRead.Add("\\gamedata_x1.drs");
-                            FilesToRead.Add("\\gamedata_x1_p1.drs");
+                            FilesToRead.Add("/sounds_x1.drs");
+                            FilesToRead.Add("/gamedata_x1.drs");
+                            FilesToRead.Add("/gamedata_x1_p1.drs");
                         }
                         else if(GenieVersion == genie::GV_CC || GenieVersion == genie::GV_CCV || GenieVersion == genie::GV_CCV2)
                         {
                             if(GameVersion == EV_EF || GameVersion == EV_EF2)
                             {
-                                FilesToRead.Add("\\sounds_x2.drs");
-                                FilesToRead.Add("\\graphics_x2.drs");
-                                FilesToRead.Add("\\terrain_x2.drs");
-                                FilesToRead.Add("\\interfac_x2.drs");
-                                FilesToRead.Add("\\gamedata_x2.drs");
+                                FilesToRead.Add("/sounds_x2.drs");
+                                FilesToRead.Add("/graphics_x2.drs");
+                                FilesToRead.Add("/terrain_x2.drs");
+                                FilesToRead.Add("/interfac_x2.drs");
+                                FilesToRead.Add("/gamedata_x2.drs");
                             }
-                            FilesToRead.Add("\\sounds_x1.drs");
+                            FilesToRead.Add("/sounds_x1.drs");
                             if (GameVersion == EV_EF || GameVersion == EV_EF2)
                             {
-                                FilesToRead.Add("\\graphics_x1_p1.drs");
-                                FilesToRead.Add("\\terrain_x1_p1.drs");
-                                FilesToRead.Add("\\interfac_x1_p1.drs");
+                                FilesToRead.Add("/graphics_x1_p1.drs");
+                                FilesToRead.Add("/terrain_x1_p1.drs");
+                                FilesToRead.Add("/interfac_x1_p1.drs");
                             }
                             else
                             {
-                                FilesToRead.Add("\\graphics_x1.drs");
-                                FilesToRead.Add("\\terrain_x1.drs");
-                                FilesToRead.Add("\\interfac_x1.drs");
+                                FilesToRead.Add("/graphics_x1.drs");
+                                FilesToRead.Add("/terrain_x1.drs");
+                                FilesToRead.Add("/interfac_x1.drs");
                             }
-                            FilesToRead.Add("\\gamedata_x1.drs");
+                            FilesToRead.Add("/gamedata_x1.drs");
                         }
                     }
-                    FilesToRead.Add("\\sounds.drs");
+                    FilesToRead.Add("/sounds.drs");
                     if (GameVersion == EV_EF || GameVersion == EV_EF2)
                     {
-                        FilesToRead.Add("\\graphics_p1.drs");
-                        FilesToRead.Add("\\terrain_p1.drs");
+                        FilesToRead.Add("/graphics_p1.drs");
+                        FilesToRead.Add("/terrain_p1.drs");
                     }
                     else
                     {
-                        FilesToRead.Add("\\graphics.drs");
-                        FilesToRead.Add("\\terrain.drs");
+                        FilesToRead.Add("/graphics.drs");
+                        FilesToRead.Add("/terrain.drs");
                     }
                     if(GenieVersion < genie::GV_AoKB)
                     {
-                        FilesToRead.Add("\\border.drs");
+                        FilesToRead.Add("/border.drs");
                     }
                     if (GameVersion == EV_EF || GameVersion == EV_EF2)
                     {
-                        FilesToRead.Add("\\interfac_p1.drs");
+                        FilesToRead.Add("/interfac_p1.drs");
                     }
                     else
                     {
-                        FilesToRead.Add("\\interfac.drs");
+                        FilesToRead.Add("/interfac.drs");
                     }
                     if(GenieVersion >= genie::GV_AoKE3)
                     {
-                        FilesToRead.Add("\\gamedata.drs");
+                        FilesToRead.Add("/gamedata.drs");
                     }
 
                     if(UseExtra)
@@ -1786,8 +1786,8 @@ void AGE_Frame::OnMenuOption(wxCommandEvent &event)
         case eCompileList:
         {
             wxString folder = wxStandardPaths::Get().GetDocumentsDir();
-            wxTextFile slp_csv(folder + "\\slps.csv");
-            wxTextFile obj_csv(folder + "\\objs.csv");
+            wxTextFile slp_csv(folder + "/slps.csv");
+            wxTextFile obj_csv(folder + "/objs.csv");
             if(!slp_csv.Create() && !slp_csv.Open())
             {
                 wxMessageBox("Failed to load/create slps.csv");

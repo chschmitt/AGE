@@ -107,7 +107,7 @@ void OpenDialog::OnDefaultAoE(wxCommandEvent &event)
 {
     OpenSaveDialog::OnDefaultAoE(event);
 
-    Path_DRS->SetPath(game_path + "\\data");
+    Path_DRS->SetPath(game_path + "/data");
     CheckBox_DRSPath->SetValue(true);
     TerrainsBox->ChangeValue("32");
 }
@@ -116,7 +116,7 @@ void OpenDialog::OnDefaultRoR(wxCommandEvent &event)
 {
     OpenSaveDialog::OnDefaultRoR(event);
 
-    Path_DRS->SetPath(game_path + "\\data");
+    Path_DRS->SetPath(game_path + "/data");
     CheckBox_DRSPath->SetValue(true);
     TerrainsBox->ChangeValue("32");
 }
@@ -126,10 +126,10 @@ void OpenDialog::OnDefaultDE1(wxCommandEvent &event)
     OpenSaveDialog::OnDefaultDE1(event);
 
     CheckBox_LangFileLocation->SetValue(true);
-    Path_DRS->SetPath(game_path + "\\Data\\DRS");
-    Path_SLP->SetPath(game_path + "\\Assets\\SLP");
-    Path_Palettes->SetPath(game_path + "\\Assets\\Palettes\\palettes.conf");
-    Path_PlayerColorPalette->SetPath(game_path + "\\Assets\\Palettes\\playercolor_blue.pal");
+    Path_DRS->SetPath(game_path + "/Data/DRS");
+    Path_SLP->SetPath(game_path + "/Assets/SLP");
+    Path_Palettes->SetPath(game_path + "/Assets/Palettes/palettes.conf");
+    Path_PlayerColorPalette->SetPath(game_path + "/Assets/Palettes/playercolor_blue.pal");
     TerrainsBox->ChangeValue("96");
     CheckBox_DRSPath->SetValue(true);
 }
@@ -138,7 +138,7 @@ void OpenDialog::OnDefaultAoK(wxCommandEvent &event)
 {
     OpenSaveDialog::OnDefaultAoK(event);
 
-    Path_DRS->SetPath(game_path + "\\data");
+    Path_DRS->SetPath(game_path + "/data");
     CheckBox_DRSPath->SetValue(true);
     TerrainsBox->ChangeValue("32");
 }
@@ -147,7 +147,7 @@ void OpenDialog::OnDefaultTC(wxCommandEvent &event)
 {
     OpenSaveDialog::OnDefaultTC(event);
 
-    Path_DRS->SetPath(game_path + "\\data");
+    Path_DRS->SetPath(game_path + "/data");
     CheckBox_DRSPath->SetValue(true);
     TerrainsBox->ChangeValue("42");
 }
@@ -158,7 +158,7 @@ void OpenDialog::OnDefaultAoKHD(wxCommandEvent &event)
 
     CheckBox_LangFileLocation->SetValue(true);
     CheckBox_LangX1FileLocation->SetValue(true);
-    Path_DRS->SetPath(game_path + "\\resources\\_common\\drs");
+    Path_DRS->SetPath(game_path + "/resources/_common/drs");
     TerrainsBox->ChangeValue("42");
     CheckBox_DRSPath->SetValue(true);
 }
@@ -169,7 +169,7 @@ void OpenDialog::OnDefaultAoP(wxCommandEvent &event)
 
     CheckBox_LangFileLocation->SetValue(true);
     CheckBox_LangX1FileLocation->SetValue(true);
-    Path_DRS->SetPath(game_path + "\\resources\\_common\\drs");
+    Path_DRS->SetPath(game_path + "/resources/_common/drs");
     TerrainsBox->ChangeValue("100");
     CheckBox_DRSPath->SetValue(true);
 }
@@ -180,10 +180,10 @@ void OpenDialog::OnDefaultDE2(wxCommandEvent &event)
 
     CheckBox_LangFileLocation->SetValue(true);
     CheckBox_LangX1FileLocation->SetValue(true);
-    Path_DRS->SetPath(game_path + "\\resources\\_common\\drs");
-    Path_SLP->SetPath(game_path + "\\resources\\_common\\drs\\graphics");
-    Path_Palettes->SetPath(game_path + "\\resources\\_common\\palettes\\palettes.conf");
-    Path_PlayerColorPalette->SetPath(game_path + "\\resources\\_common\\palettes\\playercolor_blue.pal");
+    Path_DRS->SetPath(game_path + "/resources/_common/drs");
+    Path_SLP->SetPath(game_path + "/resources/_common/drs/graphics");
+    Path_Palettes->SetPath(game_path + "/resources/_common/palettes/palettes.conf");
+    Path_PlayerColorPalette->SetPath(game_path + "/resources/_common/palettes/playercolor_blue.pal");
     TerrainsBox->ChangeValue("200");
     CheckBox_DRSPath->SetValue(true);
 }
@@ -192,7 +192,7 @@ void OpenDialog::OnDefaultSWGB(wxCommandEvent &event)
 {
     OpenSaveDialog::OnDefaultSWGB(event);
 
-    Path_DRS->SetPath(game_path + "\\data");
+    Path_DRS->SetPath(game_path + "/data");
     CheckBox_DRSPath->SetValue(true);
     TerrainsBox->ChangeValue("55");
 }
@@ -201,7 +201,7 @@ void OpenDialog::OnDefaultCC(wxCommandEvent &event)
 {
     OpenSaveDialog::OnDefaultCC(event);
 
-    Path_DRS->SetPath(game_path + "\\data");
+    Path_DRS->SetPath(game_path + "/data");
     CheckBox_DRSPath->SetValue(true);
     TerrainsBox->ChangeValue("55");
 }

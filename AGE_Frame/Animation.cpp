@@ -232,7 +232,7 @@ bool AGE_Frame::loadPalette(const wxString &folder)
 {
     if (!wxDir::Exists(folder)) return false;
     genie::PalFile pal;
-    wxString name = folder + "\\interface\\50500.bina";
+    wxString name = folder + "/interface/50500.bina";
     try
     {
         pal.load(name.c_str());
@@ -248,22 +248,22 @@ void AGE_Frame::addSLPFolders4SLPs(wxArrayString &folders, wxString folder)
     if (folder.empty()) return;
     folder.Replace("drs", "slp", false);
     if (!wxDir::Exists(folder)) return;
-    folders.Add(folder + "\\");
+    folders.Add(folder + "/");
 }
 
 void AGE_Frame::addDRSFolders4SLPs(wxArrayString &folders, const wxString &folder)
 {
     if (folder.empty()) return;
-    if (wxDir::Exists(folder + "\\gamedata_x2"))
-        folders.Add(folder + "\\gamedata_x2\\");
-    if (wxDir::Exists(folder + "\\gamedata_x1"))
-        folders.Add(folder + "\\gamedata_x1\\");
-    if (wxDir::Exists(folder + "\\interface"))
-        folders.Add(folder + "\\interface\\");
-    if (wxDir::Exists(folder + "\\graphics"))
-        folders.Add(folder + "\\graphics\\");
-    if (wxDir::Exists(folder + "\\terrain"))
-        folders.Add(folder + "\\terrain\\");
+    if (wxDir::Exists(folder + "/gamedata_x2"))
+        folders.Add(folder + "/gamedata_x2/");
+    if (wxDir::Exists(folder + "/gamedata_x1"))
+        folders.Add(folder + "/gamedata_x1/");
+    if (wxDir::Exists(folder + "/interface"))
+        folders.Add(folder + "/interface/");
+    if (wxDir::Exists(folder + "/graphics"))
+        folders.Add(folder + "/graphics/");
+    if (wxDir::Exists(folder + "/terrain"))
+        folders.Add(folder + "/terrain/");
 }
 
 bool AGE_Frame::LoadSLP(AGE_SLP *graphic)
@@ -311,11 +311,11 @@ bool AGE_Frame::LoadSLP(AGE_SLP *graphic)
                 }
                 return false;
             };
-            if (UseLooseModSLP && TryOpen(wxString(PathModSLP + "\\" + graphic->filename), graphic->slp))
+            if (UseLooseModSLP && TryOpen(wxString(PathModSLP + "/" + graphic->filename), graphic->slp))
             {
                 return true;
             }
-            if (UseLooseSLP && TryOpen(wxString(PathSLP + "\\" + graphic->filename), graphic->slp))
+            if (UseLooseSLP && TryOpen(wxString(PathSLP + "/" + graphic->filename), graphic->slp))
             {
                 return true;
             }

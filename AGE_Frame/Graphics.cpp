@@ -1630,7 +1630,7 @@ void AGE_Frame::CreateGraphicsControls()
         // Choose folder where to save.
         wxDirDialog dd(this, wxDirSelectorPromptStr, wxGetCwd());
         if(dd.ShowModal() != wxID_OK) return;
-        wxString path = dd.GetPath() + "\\";
+        wxString path = dd.GetPath() + "/";
 
         // Export SLP file from each selected graphic.
         for (int i : GraphicIDs)

@@ -1559,7 +1559,7 @@ void AGE_Frame::OnUnitSelect(wxCommandEvent &event)
         Units_DLL_HotKey4->index = UnitPointer->HotKey;
         if(GenieVersion >= genie::GV_AoKB)
         {
-            std::string newLabel = " ( ", aste = "° ";
+            std::string newLabel = " ( ", aste = "ï¿½ ";
             const float closure = 57.2957802f;
 
             #define UGLY_CODE if(angle == 0x80000000) newLabel += "max" + aste;\

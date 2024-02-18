@@ -16,7 +16,7 @@
 #include "../DRSunlock.xpm"
 #include "../AutoBackup.xpm"
 #include "../Reselection.xpm"
-
+//#include <wx/dc.h>
 //#include "genie/util/Logger.h"
 
 BaseMainFrame::BaseMainFrame(const wxString &title) :
@@ -43,7 +43,8 @@ AGE_Frame::AGE_Frame(const wxString &title, short window, wxString aP) :
     font.SetPointSize(8);
     SetIcon(wxIcon(AppIcon32_xpm));
     SetFont(font);
-    displayScaling = FromDIP(1000) / 1000.f;
+    displayScaling = 1;
+    // displayScaling = this->FromDIP(1000) / 1000.f;
     TabBar_Main = new wxNotebook(this, eTabBar);
     openEditors[window] = this;
     {
@@ -427,8 +428,9 @@ AGE_Frame::AGE_Frame(const wxString &title, short window, wxString aP) :
 
 // Fancy scaling :)
 void AGE_Frame::FixSize(float scale)
-{
-    wxRect maxSize(wxDisplay(this).GetClientArea());
+{   
+    int display = wxDisplay::GetFromWindow(this);
+    wxRect maxSize(wxDisplay(display).GetClientArea());
     float minScrollerWidth = 630 * scale;
     int ScrollerWidth = Units_ScrollSpace->GetMinSize().GetWidth();
     if (ScrollerWidth > minScrollerWidth)
