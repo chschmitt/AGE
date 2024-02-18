@@ -127,16 +127,16 @@ void AGE_Frame::OnOpen(wxCommandEvent&)
 
         int RecentItems, RecentVersion;
         {
-            wxConfig RecentOpen("", "", "AGE2/RecentOpen", "", wxCONFIG_USE_LOCAL_FILE | wxCONFIG_USE_RELATIVE_PATH);
-            RecentOpen.Read("Recent/Items", &RecentItems, 0);
-            RecentOpen.Read("Recent/Version", &RecentVersion, 1);
+            wxConfig RecentOpen("", "", "AGE2\\RecentOpen", "", wxCONFIG_USE_LOCAL_FILE | wxCONFIG_USE_RELATIVE_PATH);
+            RecentOpen.Read("Recent\\Items", &RecentItems, 0);
+            RecentOpen.Read("Recent\\Version", &RecentVersion, 1);
             RecentItems = std::min(30, RecentItems);
             OpenBox.RecentValues.resize(RecentItems);
             for(int i=0; i < RecentItems; ++i)
             {
                 OpenBox.RecentValues[i].Alloc(13);
                 wxString temp, entry = "Recent" + wxString::Format("%04d", i + 1);
-                RecentOpen.Read(entry + "/DatVersion", &temp, "-1");
+                RecentOpen.Read(entry + "\\DatVersion", &temp, "-1");
                 if (RecentVersion < 2 && lexical_cast<int>(temp) > EV_TC)
                 {
                     temp = "-1";
@@ -151,27 +151,27 @@ void AGE_Frame::OnOpen(wxCommandEvent&)
                     }
                 }
                 OpenBox.RecentValues[i].Add(temp);
-                RecentOpen.Read(entry + "/DatPath", &temp, wxEmptyString); OpenBox.RecentValues[i].Add(temp);
-                RecentOpen.Read(entry + "/Lang", &temp, wxEmptyString); OpenBox.RecentValues[i].Add(temp);
-                RecentOpen.Read(entry + "/LangX1", &temp, wxEmptyString); OpenBox.RecentValues[i].Add(temp);
-                RecentOpen.Read(entry + "/LangX1P1", &temp, wxEmptyString); OpenBox.RecentValues[i].Add(temp);
-                RecentOpen.Read(entry + "/PathDRS", &temp, wxEmptyString); OpenBox.RecentValues[i].Add(temp);
-                RecentOpen.Read(entry + "/PathDRS2", &temp, wxEmptyString); OpenBox.RecentValues[i].Add(temp);
-                RecentOpen.Read(entry + "/PathDRS3", &temp, wxEmptyString); OpenBox.RecentValues[i].Add(temp);
-                RecentOpen.Read(entry + "/LooseSLP", &temp, wxEmptyString); OpenBox.RecentValues[i].Add(temp);
+                RecentOpen.Read(entry + "\\DatPath", &temp, wxEmptyString); OpenBox.RecentValues[i].Add(temp);
+                RecentOpen.Read(entry + "\\Lang", &temp, wxEmptyString); OpenBox.RecentValues[i].Add(temp);
+                RecentOpen.Read(entry + "\\LangX1", &temp, wxEmptyString); OpenBox.RecentValues[i].Add(temp);
+                RecentOpen.Read(entry + "\\LangX1P1", &temp, wxEmptyString); OpenBox.RecentValues[i].Add(temp);
+                RecentOpen.Read(entry + "\\PathDRS", &temp, wxEmptyString); OpenBox.RecentValues[i].Add(temp);
+                RecentOpen.Read(entry + "\\PathDRS2", &temp, wxEmptyString); OpenBox.RecentValues[i].Add(temp);
+                RecentOpen.Read(entry + "\\PathDRS3", &temp, wxEmptyString); OpenBox.RecentValues[i].Add(temp);
+                RecentOpen.Read(entry + "\\LooseSLP", &temp, wxEmptyString); OpenBox.RecentValues[i].Add(temp);
                 if (RecentVersion >= 3)
                 {
-                    RecentOpen.Read(entry + "/LooseModSLP", &temp, wxEmptyString); OpenBox.RecentValues[i].Add(temp);
+                    RecentOpen.Read(entry + "\\LooseModSLP", &temp, wxEmptyString); OpenBox.RecentValues[i].Add(temp);
                 }
                 else
                 {
                     OpenBox.RecentValues[i].Add("");
                 }
-                RecentOpen.Read(entry + "/PathPalettes", &temp, wxEmptyString); OpenBox.RecentValues[i].Add(temp);
-                RecentOpen.Read(entry + "/PathPlayerPalette", &temp, wxEmptyString); OpenBox.RecentValues[i].Add(temp);
+                RecentOpen.Read(entry + "\\PathPalettes", &temp, wxEmptyString); OpenBox.RecentValues[i].Add(temp);
+                RecentOpen.Read(entry + "\\PathPlayerPalette", &temp, wxEmptyString); OpenBox.RecentValues[i].Add(temp);
                 if (RecentVersion >= 5)
                 {
-                    RecentOpen.Read(entry + "/PathCustomNames", &temp, wxEmptyString); OpenBox.RecentValues[i].Add(temp);
+                    RecentOpen.Read(entry + "\\PathCustomNames", &temp, wxEmptyString); OpenBox.RecentValues[i].Add(temp);
                 }
                 else
                 {
@@ -283,31 +283,31 @@ void AGE_Frame::OnOpen(wxCommandEvent&)
         ++popUp.loadedFileId;
 
         wxConfig Config("", "", "AGE2\\ConfigWindow"+lexical_cast<std::string>(window_num + 1), "", wxCONFIG_USE_LOCAL_FILE | wxCONFIG_USE_RELATIVE_PATH);
-        Config.Write("DefaultFiles/DriveLetter", DriveLetter);
-        Config.Write("DefaultFiles/CustomFolder", CustomFolder);
-        Config.Write("DefaultFiles/Version", GameVersion);
-        Config.Write("DefaultFiles/DatUsed", DatUsed);
-        Config.Write("DefaultFiles/DatFilename", DatFileName);
-        Config.Write("DefaultFiles/FolderDRS", FolderDRS);
-        Config.Write("DefaultFiles/FolderDRS2", FolderDRS2);
-        Config.Write("DefaultFiles/Path1stDRS", Path1stDRS);
-        Config.Write("DefaultFiles/PathLooseSprites", PathSLP);
-        Config.Write("DefaultFiles/PathLooseModSprites", PathModSLP);
-        Config.Write("DefaultFiles/PathPalettes", PathPalettes);
-        Config.Write("DefaultFiles/PathPlayerPalette", PathPlayerColorPalette);
-        Config.Write("DefaultFiles/UseDRS", UseDRS);
-        Config.Write("DefaultFiles/UseMod", UseMod);
-        Config.Write("DefaultFiles/UseExtra", UseExtra);
-        Config.Write("DefaultFiles/UseLooseSprites", UseLooseSLP);
-        Config.Write("DefaultFiles/UseLooseModSprites", UseLooseModSLP);
-        Config.Write("DefaultFiles/LangsUsed", LangsUsed);
-        Config.Write("DefaultFiles/WriteLangs", WriteLangs);
-        Config.Write("DefaultFiles/LangWriteToLatest", LangWriteToLatest);
-        Config.Write("DefaultFiles/Language", Language);
-        Config.Write("DefaultFiles/LangFilename", LangFileName);
-        Config.Write("DefaultFiles/LangX1Filename", LangX1FileName);
-        Config.Write("DefaultFiles/LangX1P1Filename", LangX1P1FileName);
-        Config.Write("Misc/CustomTerrains", CustomTerrains);
+        Config.Write("DefaultFiles\\DriveLetter", DriveLetter);
+        Config.Write("DefaultFiles\\CustomFolder", CustomFolder);
+        Config.Write("DefaultFiles\\Version", GameVersion);
+        Config.Write("DefaultFiles\\DatUsed", DatUsed);
+        Config.Write("DefaultFiles\\DatFilename", DatFileName);
+        Config.Write("DefaultFiles\\FolderDRS", FolderDRS);
+        Config.Write("DefaultFiles\\FolderDRS2", FolderDRS2);
+        Config.Write("DefaultFiles\\Path1stDRS", Path1stDRS);
+        Config.Write("DefaultFiles\\PathLooseSprites", PathSLP);
+        Config.Write("DefaultFiles\\PathLooseModSprites", PathModSLP);
+        Config.Write("DefaultFiles\\PathPalettes", PathPalettes);
+        Config.Write("DefaultFiles\\PathPlayerPalette", PathPlayerColorPalette);
+        Config.Write("DefaultFiles\\UseDRS", UseDRS);
+        Config.Write("DefaultFiles\\UseMod", UseMod);
+        Config.Write("DefaultFiles\\UseExtra", UseExtra);
+        Config.Write("DefaultFiles\\UseLooseSprites", UseLooseSLP);
+        Config.Write("DefaultFiles\\UseLooseModSprites", UseLooseModSLP);
+        Config.Write("DefaultFiles\\LangsUsed", LangsUsed);
+        Config.Write("DefaultFiles\\WriteLangs", WriteLangs);
+        Config.Write("DefaultFiles\\LangWriteToLatest", LangWriteToLatest);
+        Config.Write("DefaultFiles\\Language", Language);
+        Config.Write("DefaultFiles\\LangFilename", LangFileName);
+        Config.Write("DefaultFiles\\LangX1Filename", LangX1FileName);
+        Config.Write("DefaultFiles\\LangX1P1Filename", LangX1P1FileName);
+        Config.Write("Misc\\CustomTerrains", CustomTerrains);
 
         if(!OpenBox.CheckBox_LangFileLocation->IsChecked()) LangFileName = "";
         if(!OpenBox.CheckBox_LangX1FileLocation->IsChecked()) LangX1FileName = "";
@@ -330,24 +330,24 @@ void AGE_Frame::OnOpen(wxCommandEvent&)
         latest.Add(PathCustomNames);
         int items = produceRecentValues(latest, OpenBox.RecentValues);
         wxConfig RecentOpen("", "", "AGE2\\RecentOpen", "", wxCONFIG_USE_LOCAL_FILE | wxCONFIG_USE_RELATIVE_PATH);
-        RecentOpen.Write("Recent/Items", items);
-        RecentOpen.Write("Recent/Version", 5);
+        RecentOpen.Write("Recent\\Items", items);
+        RecentOpen.Write("Recent\\Version", 5);
         for(int i=0; i < items; ++i)
         {
             wxString entry = "Recent" + wxString::Format("%04d", i + 1);
-            RecentOpen.Write(entry + "/DatVersion", OpenBox.RecentValues[i][0]);
-            RecentOpen.Write(entry + "/DatPath", OpenBox.RecentValues[i][1]);
-            RecentOpen.Write(entry + "/Lang", OpenBox.RecentValues[i][2]);
-            RecentOpen.Write(entry + "/LangX1", OpenBox.RecentValues[i][3]);
-            RecentOpen.Write(entry + "/LangX1P1", OpenBox.RecentValues[i][4]);
-            RecentOpen.Write(entry + "/PathDRS", OpenBox.RecentValues[i][5]);
-            RecentOpen.Write(entry + "/PathDRS2", OpenBox.RecentValues[i][6]);
-            RecentOpen.Write(entry + "/PathDRS3", OpenBox.RecentValues[i][7]);
-            RecentOpen.Write(entry + "/LooseSLP", OpenBox.RecentValues[i][8]);
-            RecentOpen.Write(entry + "/LooseModSLP", OpenBox.RecentValues[i][9]);
-            RecentOpen.Write(entry + "/PathPalettes", OpenBox.RecentValues[i][10]);
-            RecentOpen.Write(entry + "/PathPlayerPalette", OpenBox.RecentValues[i][11]);
-            RecentOpen.Write(entry + "/PathCustomNames", OpenBox.RecentValues[i][12]);
+            RecentOpen.Write(entry + "\\DatVersion", OpenBox.RecentValues[i][0]);
+            RecentOpen.Write(entry + "\\DatPath", OpenBox.RecentValues[i][1]);
+            RecentOpen.Write(entry + "\\Lang", OpenBox.RecentValues[i][2]);
+            RecentOpen.Write(entry + "\\LangX1", OpenBox.RecentValues[i][3]);
+            RecentOpen.Write(entry + "\\LangX1P1", OpenBox.RecentValues[i][4]);
+            RecentOpen.Write(entry + "\\PathDRS", OpenBox.RecentValues[i][5]);
+            RecentOpen.Write(entry + "\\PathDRS2", OpenBox.RecentValues[i][6]);
+            RecentOpen.Write(entry + "\\PathDRS3", OpenBox.RecentValues[i][7]);
+            RecentOpen.Write(entry + "\\LooseSLP", OpenBox.RecentValues[i][8]);
+            RecentOpen.Write(entry + "\\LooseModSLP", OpenBox.RecentValues[i][9]);
+            RecentOpen.Write(entry + "\\PathPalettes", OpenBox.RecentValues[i][10]);
+            RecentOpen.Write(entry + "\\PathPlayerPalette", OpenBox.RecentValues[i][11]);
+            RecentOpen.Write(entry + "\\PathCustomNames", OpenBox.RecentValues[i][12]);
         }
     }
 
@@ -1175,15 +1175,15 @@ void AGE_Frame::OnSave(wxCommandEvent&)
     if(!save) return;
     {
         wxConfig Config("", "", "AGE2\\ConfigWindow"+lexical_cast<std::string>(window_num + 1), "", wxCONFIG_USE_LOCAL_FILE | wxCONFIG_USE_RELATIVE_PATH);
-        Config.Write("DefaultFiles/SyncSaveWithOpen", SyncSaveWithOpen);
-        Config.Write("DefaultFiles/SaveVersion", SaveGameVersion);
-        Config.Write("DefaultFiles/SaveDatFilename", SaveDatFileName);
-        Config.Write("DefaultFiles/SaveLangs", SaveLangs);
-        Config.Write("DefaultFiles/SaveLangFilename", SaveLangFileName);
-        Config.Write("DefaultFiles/SaveLangX1Filename", SaveLangX1FileName);
-        Config.Write("DefaultFiles/SaveLangX1P1Filename", SaveLangX1P1FileName);
-        Config.Write("DefaultFiles/SaveDat", SaveDat);
-        Config.Write("Misc/CustomTerrains", CustomTerrains);
+        Config.Write("DefaultFiles\\SyncSaveWithOpen", SyncSaveWithOpen);
+        Config.Write("DefaultFiles\\SaveVersion", SaveGameVersion);
+        Config.Write("DefaultFiles\\SaveDatFilename", SaveDatFileName);
+        Config.Write("DefaultFiles\\SaveLangs", SaveLangs);
+        Config.Write("DefaultFiles\\SaveLangFilename", SaveLangFileName);
+        Config.Write("DefaultFiles\\SaveLangX1Filename", SaveLangX1FileName);
+        Config.Write("DefaultFiles\\SaveLangX1P1Filename", SaveLangX1P1FileName);
+        Config.Write("DefaultFiles\\SaveDat", SaveDat);
+        Config.Write("Misc\\CustomTerrains", CustomTerrains);
 
         if(!SaveBox.CheckBox_LangFileLocation->IsChecked()) SaveLangFileName = "";
         if(!SaveBox.CheckBox_LangX1FileLocation->IsChecked()) SaveLangX1FileName = "";
@@ -2150,53 +2150,53 @@ void AGE_Frame::OnExit(wxCloseEvent &event)
 {
     {
         wxConfig Config("", "", "AGE2\\ConfigWindow"+lexical_cast<std::string>(window_num + 1), "", wxCONFIG_USE_LOCAL_FILE | wxCONFIG_USE_RELATIVE_PATH);
-        Config.Write("DefaultFiles/AutoBackups", AutoBackups);
-        Config.Write("Interaction/PromptForFilesOnOpen", PromptForFilesOnOpen);
-        Config.Write("Interaction/AutoCopy", AutoCopy);
-        Config.Write("Interaction/AutoCopyAngles", AutoCopyAngles);
-        Config.Write("Interaction/CopyGraphics", CopyGraphics);
-        Config.Write("Interaction/AllCivs", Units_SpecialCopy_Civs->GetValue());
-        Config.Write("Interaction/ShowSLP", ShowSLP);
-        Config.Write("Interaction/ShowIcons", ShowIcons);
-        Config.Write("Interaction/AnimSLP", AnimSLP);
-        Config.Write("Interaction/ShowShadows", ShowShadows);
-        Config.Write("Interaction/ShowOutline", ShowOutline);
-        Config.Write("Interaction/ShowDeltas", ShowDeltas);
-        Config.Write("Interaction/ShowStack", ShowStack);
-        Config.Write("Interaction/ShowAnnexes", ShowAnnexes);
-        Config.Write("Interaction/RotateAngles", RotateAngles);
-        Config.Write("Interaction/DrawTerrain", DrawTerrain);
-        Config.Write("Interaction/FilterAllSubs", FilterAllSubs);
-        Config.Write("Interaction/PlaySounds", PlaySounds);
-        Config.Write("Interaction/NeverHideAttributes", NeverHideAttributes);
-        Config.Write("Interface/ShowUnknowns", ShowUnknowns);
-        Config.Write("Interface/ResizeTerrains", ResizeTerrains);
-        Config.Write("Interface/StayOnTop", StayOnTop);
-        Config.Write("Interface/KeepViewOnTop", KeepViewOnTop);
-        Config.Write("Interface/Paste11", Paste11);
-        Config.Write("Interface/Reselection", Reselection);
-        Config.Write("Interface/MaxWindowWidthV2", maxWindowWidthV2);
+        Config.Write("DefaultFiles\\AutoBackups", AutoBackups);
+        Config.Write("Interaction\\PromptForFilesOnOpen", PromptForFilesOnOpen);
+        Config.Write("Interaction\\AutoCopy", AutoCopy);
+        Config.Write("Interaction\\AutoCopyAngles", AutoCopyAngles);
+        Config.Write("Interaction\\CopyGraphics", CopyGraphics);
+        Config.Write("Interaction\\AllCivs", Units_SpecialCopy_Civs->GetValue());
+        Config.Write("Interaction\\ShowSLP", ShowSLP);
+        Config.Write("Interaction\\ShowIcons", ShowIcons);
+        Config.Write("Interaction\\AnimSLP", AnimSLP);
+        Config.Write("Interaction\\ShowShadows", ShowShadows);
+        Config.Write("Interaction\\ShowOutline", ShowOutline);
+        Config.Write("Interaction\\ShowDeltas", ShowDeltas);
+        Config.Write("Interaction\\ShowStack", ShowStack);
+        Config.Write("Interaction\\ShowAnnexes", ShowAnnexes);
+        Config.Write("Interaction\\RotateAngles", RotateAngles);
+        Config.Write("Interaction\\DrawTerrain", DrawTerrain);
+        Config.Write("Interaction\\FilterAllSubs", FilterAllSubs);
+        Config.Write("Interaction\\PlaySounds", PlaySounds);
+        Config.Write("Interaction\\NeverHideAttributes", NeverHideAttributes);
+        Config.Write("Interface\\ShowUnknowns", ShowUnknowns);
+        Config.Write("Interface\\ResizeTerrains", ResizeTerrains);
+        Config.Write("Interface\\StayOnTop", StayOnTop);
+        Config.Write("Interface\\KeepViewOnTop", KeepViewOnTop);
+        Config.Write("Interface\\Paste11", Paste11);
+        Config.Write("Interface\\Reselection", Reselection);
+        Config.Write("Interface\\MaxWindowWidthV2", maxWindowWidthV2);
         wxPoint pos = GetPosition();
-        Config.Write("Interface/WindowPosX", pos.x);
-        Config.Write("Interface/WindowPosY", pos.y);
-        Config.Write("Interface/Zooming", slp_zoom);
-        Config.Write("Interface/AlexZoom", AlexZoom);
-        Config.Write("Interface/ViewBackgroundR", ViewBackR);
-        Config.Write("Interface/ViewBackgroundG", ViewBackG);
-        Config.Write("Interface/ViewBackgroundB", ViewBackB);
-        Config.Write("Interface/DrawAngles", DrawAngles);
-        Config.Write("Interface/DrawCollisionShape", DrawCollisionShape);
-        Config.Write("Interface/DrawClearanceShape", DrawClearanceShape);
-        Config.Write("Interface/DrawSelectionShape", DrawOutline);
-        Config.Write("Interface/CacheSizeMB", static_cast<int>(GG::cache_size / 1000000u));
-        Config.Write("Interface/ViewPosX", ViewPosX);
-        Config.Write("Interface/ViewPosY", ViewPosY);
-        Config.Write("Interface/BoxWidthMultiplier", boxWidthMultiplier);
+        Config.Write("Interface\\WindowPosX", pos.x);
+        Config.Write("Interface\\WindowPosY", pos.y);
+        Config.Write("Interface\\Zooming", slp_zoom);
+        Config.Write("Interface\\AlexZoom", AlexZoom);
+        Config.Write("Interface\\ViewBackgroundR", ViewBackR);
+        Config.Write("Interface\\ViewBackgroundG", ViewBackG);
+        Config.Write("Interface\\ViewBackgroundB", ViewBackB);
+        Config.Write("Interface\\DrawAngles", DrawAngles);
+        Config.Write("Interface\\DrawCollisionShape", DrawCollisionShape);
+        Config.Write("Interface\\DrawClearanceShape", DrawClearanceShape);
+        Config.Write("Interface\\DrawSelectionShape", DrawOutline);
+        Config.Write("Interface\\CacheSizeMB", static_cast<int>(GG::cache_size / 1000000u));
+        Config.Write("Interface\\ViewPosX", ViewPosX);
+        Config.Write("Interface\\ViewPosY", ViewPosY);
+        Config.Write("Interface\\BoxWidthMultiplier", boxWidthMultiplier);
         // Global settings
         if (window_num == 0)
         {
             int rate = AScrolled::rate * 120.f;
-            Config.Write("Interface/ScrollRate", rate);
+            Config.Write("Interface\\ScrollRate", rate);
         }
     }
 
